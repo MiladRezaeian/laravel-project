@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
             'slug'  => request('title'),
             'body'  => request('body'),
         ]);
+        
         return redirect('admin.articles.create');
 
     });
