@@ -1,6 +1,10 @@
 <?php
 
+namespace App\Http\controllers;
+
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class , 'home']);
+Route::get('/about', 'HomeController@about');
+Route::get('/contact', 'HomeController@home');
 
 Route::prefix('admin')->group(function () {
+    Route::get('articles' , 'Admin\ArticleController@index');
+
+
     Route::get('/articles/create' , function () {
         return view('admin.articles.create');
     });
     Route::post('/articles/create', function (Request $request){
+
         Article::create([
             'title' => request('title'),
             'slug'  => request('title'),
