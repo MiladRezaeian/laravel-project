@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $articles = Article::orderBy('id' , 'desc')->get();
+//        $articles = Article::orderBy('id' , 'desc')->get();
         return view('index');
     }
 

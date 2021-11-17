@@ -2,6 +2,7 @@
 
 namespace App\Http\controllers;
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -17,17 +18,17 @@ use Illuminate\Support\Facades\Validator;
 |
 */
 
-Route::get('/', 'HomeController@home');
-Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@contact');
+Route::get('/', [HomeController::class , 'home']);
+Route::get('/about', [HomeController::class , 'about']);
+Route::get('/contact', [HomeController::class , 'contact']);
 
 Route::prefix('admin')->namespace('Admin')->group(function() {
-    Route::get('/articles' , 'ArticleController@index');
+    Route::get('/articles' , [ArticleController::class , 'index']);
     Route::get('/articles/create' , [ArticleController::class , 'create']);
     Route::post('/articles/create', [ArticleController::class , 'store']);
-    Route::get('/articles/{id}/edit' , 'ArticleController@edit');
-    Route::put('/articles/{id}/edit' , 'ArticleController@update');
-    Route::delete('/articles/{id}' , 'ArticleController@delete');
+    Route::get('/articles/{id}/edit' , [ArticleController::class , 'edit']);
+    Route::put('/articles/{id}/edit' , [ArticleController::class , 'update']);
+    Route::delete('/articles/{id}' , [ArticleController::class , 'delete']);
 
 });
 

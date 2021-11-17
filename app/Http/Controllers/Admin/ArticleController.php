@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,12 +21,9 @@ class ArticleController extends Controller
         return view('admin.articles.create');
     }
 
-    public function store()
+    public function store(ArticleRequest $request)
     {
-        $validation_data = $this->validate(request() , [
-           'title' => 'required|min:10|max:50',
-           'body' => 'required'
-        ]);
+        $validation_data = $request->validated();
 
         Article::create([
             'title' => $validation_data['title'],
@@ -45,12 +43,9 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update(ArticleRequest $request, $id)
     {
-        $validate_data = $this->validate(request(),[
-            'title' => 'required|min:10|max:50',
-            'body' => 'required'
-        ]);
+        $validation_data = $request->validated();
 
         $article = Article::findOrFail($id);
 
