@@ -17,29 +17,17 @@ use Illuminate\Support\Facades\Validator;
 |
 */
 
-Route::get('/', [HomeController::class , 'home']);
+Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@home');
+Route::get('/contact', 'HomeController@contact');
 
-Route::prefix('admin')->group(function () {
-    Route::get('articles' , 'Admin\ArticleController@index');
-
-
-    Route::get('/articles/create' , function () {
-        return view('admin.articles.create');
-    });
-    Route::post('/articles/create', function (Request $request){
-
-        Article::create([
-            'title' => request('title'),
-            'slug'  => request('title'),
-            'body'  => request('body'),
-        ]);
-
-        return redirect('admin.articles.create');
-
-    });
-
-
+Route::prefix('admin')->namespace('Admin')->group(function() {
+    Route::get('/articles' , 'ArticleController@index');
+    Route::get('/articles/create' , [ArticleController::class , 'create']);
+    Route::post('/articles/create', [ArticleController::class , 'store']);
+    Route::get('/articles/{id}/edit' , 'ArticleController@edit');
+    Route::put('/articles/{id}/edit' , 'ArticleController@update');
+    Route::delete('/articles/{id}' , 'ArticleController@delete');
 
 });
+
