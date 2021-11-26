@@ -34,30 +34,24 @@ class ArticleController extends Controller
         return redirect('/admin/articles/create');
     }
 
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = \App\Article::findOrFail($id);
-
         return view('admin.articles.edit' , [
             'article' => $article
         ]);
     }
 
-    public function update(ArticleRequest $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
         $validation_data = $request->validated();
-
-        $article = Article::findOrFail($id);
 
         $article->update($validate_data);
 
         return back();
     }
 
-    public function delete($id)
+    public function delete(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         $article->delete();
 
         return back();
