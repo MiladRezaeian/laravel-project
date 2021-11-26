@@ -1,6 +1,6 @@
-@yield('content')
+{{--@yield('content')--}}
 
-@section('content')
+{{--@section('content')--}}
     <h2>Create Article</h2>
     @if($errors->any())
         <div class="alert alert-danger">
@@ -23,7 +23,7 @@
         </div>
         <button class="btn btn-danger">send</button>
     </form>
-@endsection
+{{--@endsection--}}
 
 
 //remove @section('content') because your master does not extends any other layout

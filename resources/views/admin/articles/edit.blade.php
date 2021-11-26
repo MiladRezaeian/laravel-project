@@ -1,7 +1,7 @@
-@extends('layouts.master')
+{{--@extends('layouts.master')--}}
 
 
-@section('content')
+{{--@section('content')--}}
     <h2>edit Article</h2>
     @if($errors->any())
         <div class="alert alert-danger">
@@ -25,4 +25,4 @@
         </div>
         <button class="btn btn-info">update</button>
     </form>
-@endsection
+{{--@endsection--}}
