@@ -6,7 +6,7 @@
             <th>id</th>
             <th>title</th>
             <th>body</th>
-            <th>Operation</th>
+            <th>read more</th>
         </tr>
         </thead>
         <tbody>
@@ -16,11 +16,7 @@
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->body }}</td>
                 <td>
-                    <form action="/admin/articles/{{$article->id}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button class="btn btn-danger">delete</button>
-                    </form>
+                        <a href="/articles/{{ $article->slug }}" >read more</a>
                 </td>
             </tr>
         @endforeach
