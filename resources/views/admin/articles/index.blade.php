@@ -1,7 +1,7 @@
-@extends('layouts.master')
+{{--@extends('layouts.master')--}}
 
 
-@section('content')
+{{--@section('content')--}}
     <h2>All Articles</h2>
     <table class="table">
         <thead>
@@ -27,4 +27,4 @@
         @endforeach
         </tbody>
     </table>
-@endsection
+{{--@endsection--}}

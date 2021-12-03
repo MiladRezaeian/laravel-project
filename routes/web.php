@@ -30,6 +30,5 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
     Route::get('/articles/{article}/edit' , [ArticleController::class , 'edit']);
     Route::put('/articles/{article}/edit' , [ArticleController::class , 'update']);
     Route::delete('/articles/{article}' , [ArticleController::class , 'delete']);
-
 });
 

@@ -16,6 +16,11 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function single()
+    {
+        return view('admin.articles.single');
+    }
+
     public function create()
     {
         return view('admin.articles.create');
@@ -45,7 +50,7 @@ class ArticleController extends Controller
     {
         $validation_data = $request->validated();
 
-        $article->update($validate_data);
+        $article->update($validation_data);
 
         return back();
     }
